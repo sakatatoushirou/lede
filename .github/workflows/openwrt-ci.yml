@@ -1,11 +1,3 @@
-#
-# This is free software, lisence use MIT.
-# 
-# Copyright (C) 2019 P3TERX <https://p3terx.com>
-# Copyright (C) 2019 KFERMercer <KFER.Mercer@gmail.com>
-# 
-# <https://github.com/KFERMercer/OpenWrt-CI>
-#
 
 name: openWrt1.0
 
@@ -138,81 +130,80 @@ jobs:
            CONFIG_PACKAGE_kmod-usb3=y
            EOF
 
-           # Network Support
-           cat >> .config <<EOF
-           CONFIG_PACKAGE_kmod-netem=y
-           CONFIG_PACKAGE_kmod-sched=y
-           CONFIG_PACKAGE_kmod-sched-core=y
-           CONFIG_PACKAGE_kmod-tcp-bbr=y
-           EOF
+          # Network Support
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_kmod-netem=y
+          CONFIG_PACKAGE_kmod-sched=y
+          CONFIG_PACKAGE_kmod-sched-core=y
+          CONFIG_PACKAGE_kmod-tcp-bbr=y
+          EOF
 
           # 常用LuCI插件选择:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-app-accesscontrol #访问时间控制
-          CONFIG_PACKAGE_luci-app-adbyby-plus #广告屏蔽大师Plus +
-          CONFIG_PACKAGE_luci-app-advanced-reboot #Linksys高级重启
-          CONFIG_PACKAGE_luci-app-ahcp #支持AHCPd
-          CONFIG_PACKAGE_luci-app-aliddns #阿里DDNS客户端
-          CONFIG_PACKAGE_luci-app-amule #aMule下载工具
-          CONFIG_PACKAGE_luci-app-aria2 # Aria2下载工具
-          CONFIG_PACKAGE_luci-app-arpbind #IP/MAC绑定
-          CONFIG_PACKAGE_luci-app-asterisk #支持Asterisk电话服务器
-          CONFIG_PACKAGE_luci-app-attendedsysupgrade #固件更新升级相关
-          CONFIG_PACKAGE_luci-app-autoreboot #支持计划重启
-          CONFIG_PACKAGE_luci-app-bcp38 #BCP38网络入口过滤(不确定)
-          CONFIG_PACKAGE_luci-app-bird4 #Bird 4(未知)
-          CONFIG_PACKAGE_luci-app-bird6 #Bird 6(未知)
-          CONFIG_PACKAGE_luci-app-caldav #联系人
-          CONFIG_PACKAGE_luci-app-cjdns #加密IPV6网络相关
-          CONFIG_PACKAGE_luci-app-clamav #ClamAV杀毒软件
-          CONFIG_PACKAGE_luci-app-commands #Shell命令模块
-          CONFIG_PACKAGE_luci-app-cshark #CloudShark捕获工具
-          CONFIG_PACKAGE_luci-app-ddns #动态域名 DNS
-          CONFIG_PACKAGE_luci-app-diag-core #core诊断工具
-          CONFIG_PACKAGE_luci-app-dnscrypt-proxy #DNSCrypt解决DNS污染
-          CONFIG_PACKAGE_luci-app-dnscrypt-dnsforwarder #DNSForwarder防DNS污染
-          CONFIG_PACKAGE_luci-app-dnspod #DNSPod
-          CONFIG_PACKAGE_luci-app-dump1090 #民航无线频率(不确定)
-          CONFIG_PACKAGE_luci-app-dynapoint #DynaPoint(未知)
-          CONFIG_PACKAGE_luci-app-e2guardian #Web内容过滤器
-          CONFIG_PACKAGE_luci-app-filetransfer #文件传输
-          CONFIG_PACKAGE_luci-app-firewall #添加防火墙
-          CONFIG_PACKAGE_luci-app-flowoffload #Turbo ACC FLOW转发加速
-          CONFIG_PACKAGE_luci-app-freifunk-diagnostics #freifunk组件 诊断(未知)
-          CONFIG_PACKAGE_luci-app-freifunk-policyrouting #freifunk组件 策略路由(未知)
-          CONFIG_PACKAGE_luci-app-freifunk-widgets #freifunk组件 索引(未知)
-          CONFIG_PACKAGE_luci-app-frpc #内网穿透 Frp
-          CONFIG_PACKAGE_luci-app-fwknopd #Firewall Knock Operator服务器
-          CONFIG_PACKAGE_luci-app-guest-wifi #WiFi访客网络
-          CONFIG_PACKAGE_luci-app-hd-idle #硬盘休眠
-          CONFIG_PACKAGE_luci-app-hnet #Homenet Status家庭网络控制协议
-          CONFIG_PACKAGE_luci-app-meshwizard #网络设置向导
-          CONFIG_PACKAGE_luci-app-minidlna #完全兼容DLNA / UPnP-AV客户端的服务器软件
-          CONFIG_PACKAGE_luci-app-mjpg-streamer #兼容Linux-UVC的摄像头程序
-          CONFIG_PACKAGE_luci-app-mwan #MWAN负载均衡
-          CONFIG_PACKAGE_luci-app-mwan3 #MWAN3分流助手
-          CONFIG_PACKAGE_luci-app-nlbwmon #网络带宽监视器
-          CONFIG_PACKAGE_luci-app-noddos #NodDOS Clients 阻止DDoS攻击
-          CONFIG_PACKAGE_luci-app-ntpc #NTP时间同步服务器
-          CONFIG_PACKAGE_luci-app-ocserv #OpenConnect virtual服务
-          CONFIG_PACKAGE_luci-app-olsr #OLSR配置和状态模块
-          CONFIG_PACKAGE_luci-app-olsr-services #OLSR服务器
-          CONFIG_PACKAGE_luci-app-olsr-viz #OLSR可视化
-          CONFIG_PACKAGE_luci-app-openvirtual #Openvirtual客户端
-          CONFIG_PACKAGE_luci-app-openvirtual-server #易于使用的Openvirtual服务器 Web-UI
-          CONFIG_PACKAGE_luci-app-oscam #OSCAM服务器（已弃）
-          CONFIG_PACKAGE_luci-app-p910nd #打印服务器模块
-          CONFIG_PACKAGE_luci-app-pagekitee #Pagekite内网穿透客户端
-          CONFIG_PACKAGE_luci-app-polipo #Polipo代理(是一个小型且快速的网页缓存代理)
-          CONFIG_PACKAGE_luci-app-pppoe-relay #PPPoE NAT穿透 点对点协议(PPP)
-          CONFIG_PACKAGE_luci-app-p p t p-server #virtual服务器 p p t p
-          CONFIG_PACKAGE_luci-app-privoxy #Privoxy网络代理(带过滤无缓存)
-          CONFIG_PACKAGE_luci-app-qos #流量服务质量(QoS)流控
-          CONFIG_PACKAGE_luci-app-radicale #CalDAV/CardDAV同步工具
-          CONFIG_PACKAGE_luci-app-ramfree #释放内存
-          CONFIG_PACKAGE_luci-app-rp-pppoe-server #Roaring Penguin PPPoE Server 服务器
-          CONFIG_PACKAGE_luci-app-samba4 #网络共享(Samba4)
-          CONFIG_PACKAGE_luci-app-sfe #Turbo ACC网络加速(开启Fast Path转发加速)
+          CONFIG_PACKAGE_luci-app-accesscontrol=y #访问时间控制
+          CONFIG_PACKAGE_luci-app-adbyby-plus=y #广告屏蔽大师Plus +
+          CONFIG_PACKAGE_luci-app-advanced-reboot=y #Linksys高级重启
+          CONFIG_PACKAGE_luci-app-ahcp=y #支持AHCPd
+          CONFIG_PACKAGE_luci-app-aliddns=y #阿里DDNS客户端
+          CONFIG_PACKAGE_luci-app-amule=y #aMule下载工具
+          CONFIG_PACKAGE_luci-app-aria2=y # Aria2下载工具
+          CONFIG_PACKAGE_luci-app-arpbind=y #IP/MAC绑定
+          CONFIG_PACKAGE_luci-app-asterisk=y #支持Asterisk电话服务器
+          CONFIG_PACKAGE_luci-app-attendedsysupgrade=y #固件更新升级相关
+          CONFIG_PACKAGE_luci-app-autoreboot=y #支持计划重启
+          CONFIG_PACKAGE_luci-app-bcp38=y #BCP38网络入口过滤(不确定)
+          CONFIG_PACKAGE_luci-app-bird4=y #Bird 4(未知)
+          CONFIG_PACKAGE_luci-app-bird6=y #Bird 6(未知)
+          CONFIG_PACKAGE_luci-app-caldav=y #联系人
+          CONFIG_PACKAGE_luci-app-cjdns=y #加密IPV6网络相关
+          CONFIG_PACKAGE_luci-app-clamav=y #ClamAV杀毒软件
+          CONFIG_PACKAGE_luci-app-commands=y #Shell命令模块
+          CONFIG_PACKAGE_luci-app-cshark=y #CloudShark捕获工具
+          CONFIG_PACKAGE_luci-app-ddns=y #动态域名 DNS
+          CONFIG_PACKAGE_luci-app-diag-core=y #core诊断工具
+          CONFIG_PACKAGE_luci-app-dnscrypt-proxy=y #DNSCrypt解决DNS污染
+          CONFIG_PACKAGE_luci-app-dnscrypt-dnsforwarder=y #DNSForwarder防DNS污染
+          CONFIG_PACKAGE_luci-app-dnspod=y #DNSPod
+          CONFIG_PACKAGE_luci-app-dump1090=y #民航无线频率(不确定)
+          CONFIG_PACKAGE_luci-app-dynapoint=y #DynaPoint(未知)
+          CONFIG_PACKAGE_luci-app-e2guardian=y #Web内容过滤器
+          CONFIG_PACKAGE_luci-app-filetransfer=y #文件传输
+          CONFIG_PACKAGE_luci-app-firewall=y #添加防火墙
+          CONFIG_PACKAGE_luci-app-flowoffload=y #Turbo ACC FLOW转发加速
+          CONFIG_PACKAGE_luci-app-freifunk-diagnostics=y #freifunk组件 诊断(未知)
+          CONFIG_PACKAGE_luci-app-freifunk-policyrouting=y #freifunk组件 策略路由(未知)
+          CONFIG_PACKAGE_luci-app-freifunk-widgets=y #freifunk组件 索引(未知)
+          CONFIG_PACKAGE_luci-app-frpc=y #内网穿透 Frp
+          CONFIG_PACKAGE_luci-app-fwknopd=y #Firewall Knock Operator服务器
+          CONFIG_PACKAGE_luci-app-guest-wifi=y #WiFi访客网络
+          CONFIG_PACKAGE_luci-app-hd-idle=y #硬盘休眠
+          CONFIG_PACKAGE_luci-app-hnet=y #Homenet Status家庭网络控制协议
+          CONFIG_PACKAGE_luci-app-meshwizard=y #网络设置向导
+          CONFIG_PACKAGE_luci-app-minidlna=y #完全兼容DLNA / UPnP-AV客户端的服务器软件
+          CONFIG_PACKAGE_luci-app-mjpg-streamer=y #兼容Linux-UVC的摄像头程序
+          CONFIG_PACKAGE_luci-app-mwan=y #MWAN负载均衡
+          CONFIG_PACKAGE_luci-app-mwan3=y #MWAN3分流助手
+          CONFIG_PACKAGE_luci-app-nlbwmon=y #网络带宽监视器
+          CONFIG_PACKAGE_luci-app-noddos=y #NodDOS Clients 阻止DDoS攻击
+          CONFIG_PACKAGE_luci-app-ntpc=y #NTP时间同步服务器
+          CONFIG_PACKAGE_luci-app-ocserv=y #OpenConnect virtual服务
+          CONFIG_PACKAGE_luci-app-olsr=y #OLSR配置和状态模块
+          CONFIG_PACKAGE_luci-app-olsr-services=y #OLSR服务器
+          CONFIG_PACKAGE_luci-app-olsr-viz=y #OLSR可视化
+          CONFIG_PACKAGE_luci-app-openvirtual=y #Openvirtual客户端
+          CONFIG_PACKAGE_luci-app-openvirtual-server=y #易于使用的Openvirtual服务器 Web-UI
+          CONFIG_PACKAGE_luci-app-p910nd=y #打印服务器模块
+          CONFIG_PACKAGE_luci-app-pagekitee=y #Pagekite内网穿透客户端
+          CONFIG_PACKAGE_luci-app-polipo=y #Polipo代理(是一个小型且快速的网页缓存代理)
+          CONFIG_PACKAGE_luci-app-pppoe-relay=y #PPPoE NAT穿透 点对点协议(PPP)
+          CONFIG_PACKAGE_luci-app-pptp-server=y #virtual服务器 p p t p
+          CONFIG_PACKAGE_luci-app-privoxy=y #Privoxy网络代理(带过滤无缓存)
+          CONFIG_PACKAGE_luci-app-qos=y #流量服务质量(QoS)流控
+          CONFIG_PACKAGE_luci-app-radicale=y #CalDAV/CardDAV同步工具
+          CONFIG_PACKAGE_luci-app-ramfree=y #释放内存
+          CONFIG_PACKAGE_luci-app-rp-pppoe-server=y #Roaring Penguin PPPoE Server 服务器
+          CONFIG_PACKAGE_luci-app-samba4=y #网络共享(Samba4)
+          CONFIG_PACKAGE_luci-app-sfe=y #Turbo ACC网络加速(开启Fast Path转发加速)
           CONFIG_PACKAGE_luci-app-s-s #SS兲朝上网（已弃）
           CONFIG_PACKAGE_luci-app-s-s-libes #SS-libev服务端
           CONFIG_PACKAGE_luci-app-shairplay #支持AirPlay功能
@@ -222,40 +213,40 @@ jobs:
           CONFIG_PACKAGE_luci-app-splash #Client-Splash是无线MESH网络的一个热点认证系统
           CONFIG_PACKAGE_luci-app-sqm #流量智能队列管理(QOS)
           CONFIG_PACKAGE_luci-app-squid #Squid代理服务器
-          CONFIG_PACKAGE_luci-app-S-S R-plus #S-S R兲朝上网Plus+
-          CONFIG_PACKAGE_luci-app-S-S R-plus —> Include s-s New Versiong #新SS代理
-          CONFIG_PACKAGE_luci-app-S-S R-plus —> Include V2ray #V2Ray透明代理
-          CONFIG_PACKAGE_luci-app-S-S R-plus —> Include Kcptun #Kcptun代理
-          CONFIG_PACKAGE_luci-app-S-S R-plus —> Include s-sR Server #S-S R客户端
-          CONFIG_PACKAGE_luci-app-S-S R-plus —> Include s-sR Socks and Tunnel #S-S R代理
-          CONFIG_PACKAGE_luci-app-S-S R-pro #S-S R-Pro
-          CONFIG_PACKAGE_luci-app-S-S Rserver-python #s-sR Python服务器
-          CONFIG_PACKAGE_luci-app-statistics #流量监控工具
-          CONFIG_PACKAGE_luci-app-syncdial #多拨虚拟网卡(原macvlan)
-          CONFIG_PACKAGE_luci-app-tinyproxy #Tinyproxy是 HTTP(S)代理服务器
-          CONFIG_PACKAGE_luci-app-transmission #BT下载工具
-          CONFIG_PACKAGE_luci-app-travelmate #旅行路由器
-          CONFIG_PACKAGE_luci-app-ttyd #网页终端命令行
-          CONFIG_PACKAGE_luci-app-udpxy #udpxy做组播服务器
-          CONFIG_PACKAGE_luci-app-uhttpd #uHTTPd Web服务器
-          CONFIG_PACKAGE_luci-app-unbound #Unbound DNS解析器
-          CONFIG_PACKAGE_luci-app-upnp #通用即插即用UPnP(端口自动转发)
-          CONFIG_PACKAGE_luci-app-usb-printer #USB 打印服务器
-          CONFIG_PACKAGE_luci-app-v2ray-pro #V2Ray透明代理
-          CONFIG_PACKAGE_luci-app-vlmcsd #KMS服务器设置
-          CONFIG_PACKAGE_luci-app-vnstat #vnStat网络监控(图表)
-          CONFIG_PACKAGE_luci-app-virtualbypass #virtual BypassWebUI 绕过virtual设置
-          CONFIG_PACKAGE_luci-app-vsftpd #FTP服务器
-          CONFIG_PACKAGE_luci-app-watchcat #断网检测功能与定时重启
-          CONFIG_PACKAGE_luci-app-webadmin #Web管理页面设置
-          CONFIG_PACKAGE_luci-app-webshell #网页命令行终端（已弃）
-          CONFIG_PACKAGE_luci-app-wifischedule #WiFi 计划
-          CONFIG_PACKAGE_luci-app-wireguard #virtual**服务器 WireGuard状态
-          CONFIG_PACKAGE_luci-app-wireless-regdb #WiFi无线
-          CONFIG_PACKAGE_luci-app-wol #WOL网络唤醒
-          CONFIG_PACKAGE_luci-app-wrtbwmon #实时流量监测
-          CONFIG_PACKAGE_luci-app-xlnetacc #迅雷快鸟
-          CONFIG_PACKAGE_luci-app-zerotier #ZeroTier内网穿透
+          CONFIG_PACKAGE_luci-app-ssr-plus=y #S-S R兲朝上网Plus+
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
+          CONFIG_PACKAGE_luci-app-ssr-pro=y #S-S R-Pro
+          CONFIG_PACKAGE_luci-app-ssrserver-python=y #s-sR Python服务器
+          CONFIG_PACKAGE_luci-app-statistics=y #流量监控工具
+          CONFIG_PACKAGE_luci-app-syncdial=y #多拨虚拟网卡(原macvlan)
+          CONFIG_PACKAGE_luci-app-tinyproxy=y #Tinyproxy是 HTTP(S)代理服务器
+          CONFIG_PACKAGE_luci-app-transmission=y #BT下载工具
+          CONFIG_PACKAGE_luci-app-travelmate=y #旅行路由器
+          CONFIG_PACKAGE_luci-app-ttyd=y #网页终端命令行
+          CONFIG_PACKAGE_luci-app-udpxy=y #udpxy做组播服务器
+          CONFIG_PACKAGE_luci-app-uhttpd=y #uHTTPd Web服务器
+          CONFIG_PACKAGE_luci-app-unbound=y #Unbound DNS解析器
+          CONFIG_PACKAGE_luci-app-upnp=y #通用即插即用UPnP(端口自动转发)
+          CONFIG_PACKAGE_luci-app-usb-printer=y #USB 打印服务器
+          CONFIG_PACKAGE_luci-app-v2ray-pro=y #V2Ray透明代理
+          CONFIG_PACKAGE_luci-app-vlmcsd=y #KMS服务器设置
+          CONFIG_PACKAGE_luci-app-vnstat=y #vnStat网络监控(图表)
+          CONFIG_PACKAGE_luci-app-virtualbypass=y #virtual BypassWebUI 绕过virtual设置
+          CONFIG_PACKAGE_luci-app-vsftpd=y #FTP服务器
+          CONFIG_PACKAGE_luci-app-watchcat=y #断网检测功能与定时重启
+          CONFIG_PACKAGE_luci-app-webadmin=y #Web管理页面设置
+          CONFIG_PACKAGE_luci-app-webshell=y #网页命令行终端（已弃）
+          CONFIG_PACKAGE_luci-app-wifischedule=y #WiFi 计划
+          CONFIG_PACKAGE_luci-app-wireguard=y #virtual**服务器 WireGuard状态
+          CONFIG_PACKAGE_luci-app-wireless-regdb=y #WiFi无线
+          CONFIG_PACKAGE_luci-app-wol=y #WOL网络唤醒
+          CONFIG_PACKAGE_luci-app-wrtbwmon=y #实时流量监测
+          CONFIG_PACKAGE_luci-app-xlnetacc=y #迅雷快鸟
+          CONFIG_PACKAGE_luci-app-zerotier=y #ZeroTier内网穿透
           EOF
 
           # LuCI主题:
