@@ -138,13 +138,13 @@ jobs:
            CONFIG_PACKAGE_kmod-usb3=y
            EOF
 
-          # Network Support
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-netem=y
-          CONFIG_PACKAGE_kmod-sched=y
-          CONFIG_PACKAGE_kmod-sched-core=y
-          CONFIG_PACKAGE_kmod-tcp-bbr=y
-          EOF
+           # Network Support
+           cat >> .config <<EOF
+           CONFIG_PACKAGE_kmod-netem=y
+           CONFIG_PACKAGE_kmod-sched=y
+           CONFIG_PACKAGE_kmod-sched-core=y
+           CONFIG_PACKAGE_kmod-tcp-bbr=y
+           EOF
 
           # 常用LuCI插件选择:
           cat >> .config <<EOF
